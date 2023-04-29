@@ -1,0 +1,55 @@
+"```python
+import turtle
+import math
+
+
+def draw_line(turt, length):
+    turt.forward(length)
+    turt.backward(length)
+
+
+def draw_branch(turt, length, angle, depth):
+    if depth == 0:
+        draw_line(turt, length)
+    else:
+        fractal_ratio = 0.7
+        sub_length = length * fractal_ratio
+
+        turt.forward(length)
+        turt.right(angle)
+        draw_branch(turt, sub_length, angle, depth - 1)
+
+        turt.left(angle * 2)
+        draw_branch(turt, sub_length, angle, depth - 1)
+
+        turt.right(angle)
+        turt.backward(length)
+
+
+def draw_fractal_tree(turt, init_length, angle, depth):
+    turt.speed(0)
+    turt.penup()
+    turt.goto(0, -200)
+    turt.pendown()
+
+    turt.setheading(90)
+    draw_branch(turt, init_length, angle, depth)
+
+
+window = turtle.Screen()
+window.bgcolor(""white"")
+
+fractal_turtle = turtle.Turtle()
+fractal_turtle.pensize(2)
+fractal_turtle.pencolor(""green"")
+
+init_length = 150
+angle = 30
+depth = 5
+
+draw_fractal_tree(fractal_turtle, init_length, angle, depth)
+
+window.exitonclick()
+```
+
+这是一段使用Python的turtle库绘制自然分形树的复杂代码。代码的英文标题为 ""FractalTreeVisualization""。"
